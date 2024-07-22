@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
   const [open, setOpen] = useState(false);
+
+  const user = true;
   return (
     <nav>
       <div className="left">
@@ -17,10 +19,23 @@ function Navbar() {
         <Link to="/">Agents</Link>
       </div>
       <div className="right">
-        <Link to="/">Sign in</Link>
-        <Link to="/" className="register">
-          Sign up
-        </Link>
+        {user ? (
+          <div className="user">
+            <img src="/jonh-due.jpg" alt="" />
+            <span>John Due</span>
+            <Link to="/profile" className="profile">
+              <div className="notification">3</div>
+              <span>Profile</span>
+            </Link>
+          </div>
+        ) : (
+          <>
+            <Link to="/">Sign in</Link>
+            <Link to="/" className="register">
+              Sign up
+            </Link>
+          </>
+        )}
         <div className="menuIcon">
           <img
             src="/menu.png"
